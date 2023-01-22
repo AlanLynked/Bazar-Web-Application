@@ -1,0 +1,914 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<test_cases>
+  <test_case internal_id="3669" name="Sign In with correct credentials">
+    <external_id>QBC-2692</external_id>
+    <summary>
+      <![CDATA[]]>
+    </summary>
+    <preconditions>
+      <![CDATA[Fields {username} and {password} contain values of an existing user]]>
+    </preconditions>
+    <steps>
+      <step>
+        <order>1</order>
+        <name>
+          <![CDATA[<p>Do a POST request that looks like this:<br>URL:&nbsp;<a href="http://bazar.jettycloud.com:8080/authenticate" target="_blank">http://bazar.jettycloud.com:8080/authenticate</a><span style="background-color: transparent;"><br>Body:&nbsp;<br>{<br>"username":"{username}",</span></p><p><span style="background-color: transparent;">"password":"{password}"<br>}</span></p>]]>
+        </name>
+        <expected_result>
+          <![CDATA[<p>Server answer looks like this<br>Code 200<br>Body:<br>{<br>token:"{token}"<br>}</p>]]>
+        </expected_result>
+        <execution_type_id>0</execution_type_id>
+      </step>
+    </steps>
+    <custom_fields>
+      <custom_field label="Positive/Negative" system_name="Positive/Negative">
+        <custom_values>
+          <custom_value>positive</custom_value>
+        </custom_values>
+      </custom_field>
+      <custom_field label="Вид тестирования" system_name="Вид тестирования">
+        <custom_values>
+          <custom_value>api</custom_value>
+        </custom_values>
+      </custom_field>
+    </custom_fields>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+  <test_case internal_id="3680" name="Sign In with incorrect credentials">
+    <external_id>QBC-2703</external_id>
+    <summary>
+      <![CDATA[]]>
+    </summary>
+    <preconditions>
+      <![CDATA[Field {username} contains value of an existing user and field {password} contains incorrect value]]>
+    </preconditions>
+    <steps>
+      <step>
+        <order>1</order>
+        <name>
+          <![CDATA[<p>Do a POST request that looks like this:<br>URL:&nbsp;<a href="http://bazar.jettycloud.com:8080/authenticate" target="_blank" style="text-decoration: none; color: rgb(243, 178, 107) !important;">http://bazar.jettycloud.com:8080/authenticate</a><span style="background-color: transparent;"><br>Body:&nbsp;<br>{<br>"username":"{username}",</span></p><p><span style="background-color: transparent;">"password":"{password}"<br>}</span></p>]]>
+        </name>
+        <expected_result>
+          <![CDATA[<p>Server answer looks like this<br>Code 4xx<br>Body:<br>{<br>message:"{error message}"<br>}<br></p>]]>
+        </expected_result>
+        <execution_type_id>0</execution_type_id>
+      </step>
+    </steps>
+    <custom_fields>
+      <custom_field label="Positive/Negative" system_name="Positive/Negative">
+        <custom_values>
+          <custom_value>negative</custom_value>
+        </custom_values>
+      </custom_field>
+      <custom_field label="Вид тестирования" system_name="Вид тестирования">
+        <custom_values>
+          <custom_value>api</custom_value>
+        </custom_values>
+      </custom_field>
+    </custom_fields>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+  <test_case internal_id="3670" name="Sign Up with adequate credentials">
+    <external_id>QBC-2693</external_id>
+    <summary>
+      <![CDATA[<p>POST request on sign up</p>]]>
+    </summary>
+    <preconditions>
+      <![CDATA[<p>Fields {password}, {username} and {email} contain adequate values</p>]]>
+    </preconditions>
+    <steps>
+      <step>
+        <order>1</order>
+        <name>
+          <![CDATA[<p>Make a POST request that looks like this:</p><p>URL:&nbsp;<a href="http://bazar.jettycloud.com:8080/signup" target="_blank" style="font-family: Roboto; font-weight: normal; text-decoration: none; background-color: rgb(48, 48, 48); color: rgb(243, 178, 107) !important;">http://bazar.jettycloud.com:8080/signup</a><span style="background-color: transparent; color: rgb(33, 33, 33); font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, Helvetica, Arial, sans-serif; font-size: 12px; white-space: pre-wrap;"> </span></p><p>Body:&nbsp;<span style="font-family: Arial; font-size: 11pt; white-space: pre-wrap; color: inherit;">​​{</span></p><p><span style="font-family: Arial; font-size: 11pt; white-space: pre-wrap; color: inherit;">"username":"{username}",</span></p><p><span style="font-family: Arial; font-size: 11pt; white-space: pre-wrap; color: inherit;">"password":"{password}",</span></p><p><span style="font-family: Arial; font-size: 11pt; white-space: pre-wrap; color: inherit;">"email":"{email}"</span></p><p><span style="font-family: Arial; font-size: 11pt; white-space: pre-wrap; color: inherit;">}</span></p>]]>
+        </name>
+        <expected_result>
+          <![CDATA[<p>Code 200<br>Server answer looks like this:</p><p>{</p><p>"token":"{token}"</p><p>}</p>]]>
+        </expected_result>
+        <execution_type_id>0</execution_type_id>
+      </step>
+      <step>
+        <order>2</order>
+        <name>
+          <![CDATA[<p>Check if user added to the database</p>]]>
+        </name>
+        <expected_result>
+          <![CDATA[<p>User added to the database</p>]]>
+        </expected_result>
+        <execution_type_id>0</execution_type_id>
+      </step>
+    </steps>
+    <custom_fields>
+      <custom_field label="Positive/Negative" system_name="Positive/Negative">
+        <custom_values>
+          <custom_value>positive</custom_value>
+        </custom_values>
+      </custom_field>
+      <custom_field label="Функциональность" system_name="Функциональность">
+        <custom_values>
+          <custom_value>API</custom_value>
+        </custom_values>
+      </custom_field>
+    </custom_fields>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+  <test_case internal_id="3679" name="Sign Up with inadequate email">
+    <external_id>QBC-2702</external_id>
+    <summary>
+      <![CDATA[]]>
+    </summary>
+    <preconditions>
+      <![CDATA[Fields {password}, {username} contain adequate values. Field {email} contains value without "@domain.domain" part]]>
+    </preconditions>
+    <steps>
+      <step>
+        <order>1</order>
+        <name>
+          <![CDATA[<p>Make a POST request that looks like this:</p><p>URL:&nbsp;<a href="http://bazar.jettycloud.com:8080/signup" target="_blank" style="text-decoration: none; background-color: rgb(48, 48, 48); font-family: Roboto; font-weight: normal; color: rgb(243, 178, 107) !important;">http://bazar.jettycloud.com:8080/signup</a><span style="color: rgb(33, 33, 33); background-color: transparent; font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, Helvetica, Arial, sans-serif; font-size: 12px; white-space: pre-wrap;"> </span></p><p>Body:&nbsp;<span style="color: inherit; font-family: Arial; font-size: 11pt; white-space: pre-wrap;">​​{</span></p><p><span style="color: inherit; font-family: Arial; font-size: 11pt; white-space: pre-wrap;">"username":"{username}",</span></p><p><span style="color: inherit; font-family: Arial; font-size: 11pt; white-space: pre-wrap;">"password":"{password}",</span></p><p><span style="color: inherit; font-family: Arial; font-size: 11pt; white-space: pre-wrap;">"email":"{email}"</span></p><p><span style="color: inherit; font-family: Arial; font-size: 11pt; white-space: pre-wrap;">}</span></p>]]>
+        </name>
+        <expected_result>
+          <![CDATA[<p>Code 4xx that looks like this:</p><p>{</p><p>message: {error}</p><p>}</p>]]>
+        </expected_result>
+        <execution_type_id>0</execution_type_id>
+      </step>
+      <step>
+        <order>2</order>
+        <name>
+          <![CDATA[<p>Check that user is not added to the database</p>]]>
+        </name>
+        <expected_result>
+          <![CDATA[<p>User is not added to the database</p>]]>
+        </expected_result>
+        <execution_type_id>0</execution_type_id>
+      </step>
+    </steps>
+    <custom_fields>
+      <custom_field label="Positive/Negative" system_name="Positive/Negative">
+        <custom_values>
+          <custom_value>negative</custom_value>
+        </custom_values>
+      </custom_field>
+      <custom_field label="Вид тестирования" system_name="Вид тестирования">
+        <custom_values>
+          <custom_value>api</custom_value>
+        </custom_values>
+      </custom_field>
+    </custom_fields>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+  <test_case internal_id="3701" name="Sign Up with email that already exists in the system">
+    <external_id>QBC-2721</external_id>
+    <summary>
+      <![CDATA[]]>
+    </summary>
+    <preconditions>
+      <![CDATA[Fields {password}, {username} contain adequate values. Field {email} contains value that already exists in the database]]>
+    </preconditions>
+    <steps>
+      <step>
+        <order>1</order>
+        <name>
+          <![CDATA[<p>Make a POST request that looks like this:</p><p>URL:&nbsp;<a href="http://bazar.jettycloud.com:8080/signup" target="_blank" style="text-decoration: none; background-color: rgb(48, 48, 48); font-family: Roboto; font-weight: normal; color: rgb(243, 178, 107) !important;">http://bazar.jettycloud.com:8080/signup</a><span style="color: rgb(33, 33, 33); background-color: transparent; font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, Helvetica, Arial, sans-serif; font-size: 12px; white-space: pre-wrap;"> </span></p><p>Body:&nbsp;<span style="color: inherit; font-family: Arial; font-size: 11pt; white-space: pre-wrap;">​​{</span></p><p><span style="color: inherit; font-family: Arial; font-size: 11pt; white-space: pre-wrap;">"username":"{username}",</span></p><p><span style="color: inherit; font-family: Arial; font-size: 11pt; white-space: pre-wrap;">"password":"{password}",</span></p><p><span style="color: inherit; font-family: Arial; font-size: 11pt; white-space: pre-wrap;">"email":"{email}"</span></p><p><span style="color: inherit; font-family: Arial; font-size: 11pt; white-space: pre-wrap;">}</span></p>]]>
+        </name>
+        <expected_result>
+          <![CDATA[<p>Code 4xx<br>Server answer looks like this<br>{</p><p>message: "{error message}"<br>}</p>]]>
+        </expected_result>
+        <execution_type_id>0</execution_type_id>
+      </step>
+      <step>
+        <order>2</order>
+        <name>
+          <![CDATA[<p>Check that user is not added to the database</p>]]>
+        </name>
+        <expected_result>
+          <![CDATA[<p>User is not added to the databse</p>]]>
+        </expected_result>
+        <execution_type_id>0</execution_type_id>
+      </step>
+    </steps>
+    <custom_fields>
+      <custom_field label="Positive/Negative" system_name="Positive/Negative">
+        <custom_values>
+          <custom_value>negative</custom_value>
+        </custom_values>
+      </custom_field>
+      <custom_field label="Вид тестирования" system_name="Вид тестирования">
+        <custom_values>
+          <custom_value>api</custom_value>
+        </custom_values>
+      </custom_field>
+    </custom_fields>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+  <test_case internal_id="3671" name="Create lot with adequate fields values">
+    <external_id>QBC-2694</external_id>
+    <summary>
+      <![CDATA[]]>
+    </summary>
+    <preconditions>
+      <![CDATA[User exists in the system with values {username},{password}]]>
+    </preconditions>
+    <steps>
+      <step>
+        <order>1</order>
+        <name>
+          <![CDATA[<p>Do POST request that looks like this:<br>URL:&nbsp;<a href="http://bazar.jettycloud.com:8080/authenticate" target="_blank">http://bazar.jettycloud.com:8080/authenticate</a><span style="background-color: transparent;"></span></p><p><span style="background-color: transparent;">Body:<br></span><span style="color: inherit;"><span style="font-size: 12px; white-space: pre;">{<br></span>&nbsp;&nbsp;"username":&nbsp;"username",<br>&nbsp;&nbsp;"password":&nbsp;"password"<br><span style="font-size: 12px; white-space: pre;">}</span></span><span style="background-color: transparent;"><br></span></p>]]>
+        </name>
+        <expected_result>
+          <![CDATA[<p>Server answer looks like this:<br>Code 200</p><p>Body:<br>{<br>token:{token}<br>}</p>]]>
+        </expected_result>
+        <execution_type_id>0</execution_type_id>
+      </step>
+      <step>
+        <order>2</order>
+        <name>
+          <![CDATA[<p>Do POST request<br>{<br></p><p>"name":"{name}",</p><p>"price":{price},</p><p>"description":"{description}",</p><p>"files":{files}</p><p>}</p><p>In Authorization choose "Bearer Token" and type {token} that you got from step 1</p>]]>
+        </name>
+        <expected_result>
+          <![CDATA[<p>Server answer looks like this:<br>Code 200</p><p>Body:<br>{<br>id:{id}<br>}</p>]]>
+        </expected_result>
+        <execution_type_id>0</execution_type_id>
+      </step>
+      <step>
+        <order>3</order>
+        <name>
+          <![CDATA[<p>Check that lot is added to the system</p>]]>
+        </name>
+        <expected_result>
+          <![CDATA[<p>Lot is added to the system</p>]]>
+        </expected_result>
+        <execution_type_id>0</execution_type_id>
+      </step>
+    </steps>
+    <custom_fields>
+      <custom_field label="Positive/Negative" system_name="Positive/Negative">
+        <custom_values>
+          <custom_value>positive</custom_value>
+        </custom_values>
+      </custom_field>
+      <custom_field label="Вид тестирования" system_name="Вид тестирования">
+        <custom_values>
+          <custom_value>api</custom_value>
+        </custom_values>
+      </custom_field>
+    </custom_fields>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+  <test_case internal_id="3688" name="Create lot with .txt file">
+    <external_id>QBC-2710</external_id>
+    <summary>
+      <![CDATA[]]>
+    </summary>
+    <preconditions>
+      <![CDATA[]]>
+    </preconditions>
+    <steps/>
+    <custom_fields/>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+  <test_case internal_id="3692" name="Create lot with an empty field">
+    <external_id>QBC-2714</external_id>
+    <summary>
+      <![CDATA[]]>
+    </summary>
+    <preconditions>
+      <![CDATA[]]>
+    </preconditions>
+    <steps/>
+    <custom_fields/>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+  <test_case internal_id="3681" name="Create lot with negative price value">
+    <external_id>QBC-2704</external_id>
+    <summary>
+      <![CDATA[]]>
+    </summary>
+    <preconditions>
+      <![CDATA[]]>
+    </preconditions>
+    <steps/>
+    <custom_fields/>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+  <test_case internal_id="3704" name="Exchange lots with other user">
+    <external_id>QBC-2724</external_id>
+    <summary>
+      <![CDATA[]]>
+    </summary>
+    <preconditions>
+      <![CDATA[]]>
+    </preconditions>
+    <steps/>
+    <custom_fields/>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+  <test_case internal_id="3672" name="Notifications Case">
+    <external_id>QBC-2695</external_id>
+    <summary>
+      <![CDATA[]]>
+    </summary>
+    <preconditions>
+      <![CDATA[]]>
+    </preconditions>
+    <steps/>
+    <custom_fields/>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+  <test_case internal_id="3673" name="Sign In with correct credentials">
+    <external_id>QBC-2696</external_id>
+    <summary>
+      <![CDATA[]]>
+    </summary>
+    <preconditions>
+      <![CDATA[Entrypoint:&nbsp;<a href="http://bazar.jettycloud.com/" target="_blank" style="background-color: rgb(48, 48, 48); font-family: Roboto; font-weight: 400;">http://bazar.jettycloud.com/</a><br>User is not logged in. There is a user in the system with credentials {username}, {password}]]>
+    </preconditions>
+    <steps>
+      <step>
+        <order>1</order>
+        <name>
+          <![CDATA[In the field "username" type {username}<br>In the field "password" type {password}<br>Hit "Log In"]]>
+        </name>
+        <expected_result>
+          <![CDATA[<p>User is logged in.</p>]]>
+        </expected_result>
+        <execution_type_id>0</execution_type_id>
+      </step>
+    </steps>
+    <custom_fields>
+      <custom_field label="Positive/Negative" system_name="Positive/Negative">
+        <custom_values>
+          <custom_value>positive</custom_value>
+        </custom_values>
+      </custom_field>
+      <custom_field label="Вид тестирования" system_name="Вид тестирования">
+        <custom_values>
+          <custom_value>WEB</custom_value>
+        </custom_values>
+      </custom_field>
+    </custom_fields>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+  <test_case internal_id="3677" name="Sign In with incorrect password">
+    <external_id>QBC-2700</external_id>
+    <summary>
+      <![CDATA[]]>
+    </summary>
+    <preconditions>
+      <![CDATA[Entrypoint:&nbsp;<a href="http://bazar.jettycloud.com/" target="_blank" style="background-color: rgb(48, 48, 48); font-family: Roboto; font-weight: 400;">http://bazar.jettycloud.com/</a><br>User is not logged in. There is a user in the system with credentials {username}, {password}]]>
+    </preconditions>
+    <steps>
+      <step>
+        <order>1</order>
+        <name>
+          <![CDATA[<p> 
+
+ 
+
+</p>In the field "username" type {username}<br>In the field "password" type 1<br>Hit "Log In"<br>]]>
+        </name>
+        <expected_result>
+          <![CDATA[<p>The user is not logged in</p>]]>
+        </expected_result>
+        <execution_type_id>0</execution_type_id>
+      </step>
+    </steps>
+    <custom_fields>
+      <custom_field label="Positive/Negative" system_name="Positive/Negative">
+        <custom_values>
+          <custom_value>negative</custom_value>
+        </custom_values>
+      </custom_field>
+      <custom_field label="Вид тестирования" system_name="Вид тестирования">
+        <custom_values>
+          <custom_value>WEB</custom_value>
+        </custom_values>
+      </custom_field>
+    </custom_fields>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+  <test_case internal_id="3674" name="Sign Up with adequate credentials">
+    <external_id>QBC-2697</external_id>
+    <summary>
+      <![CDATA[]]>
+    </summary>
+    <preconditions>
+      <![CDATA[Entrypoint:&nbsp;<a href="http://bazar.jettycloud.com/" target="_blank" style="background-color: rgb(48, 48, 48); font-family: Roboto; font-weight: 400;">http://bazar.jettycloud.com/</a><br>User is not logged in. There is no user in the system with username {username}]]>
+    </preconditions>
+    <steps>
+      <step>
+        <order>1</order>
+        <name>
+          <![CDATA[<p>Hit the "Sign Up" button</p><p>Fill all the fields adequately. In the field username type {username}<br>Hit the "Sign Up" button</p>]]>
+        </name>
+        <expected_result>
+          <![CDATA[Redirecting to the page with notifications]]>
+        </expected_result>
+        <execution_type_id>0</execution_type_id>
+      </step>
+      <step>
+        <order>2</order>
+        <name>
+          <![CDATA[<p>Check the database if it has the new user in it</p>]]>
+        </name>
+        <expected_result>
+          <![CDATA[<p>The user is added to the database</p>]]>
+        </expected_result>
+        <execution_type_id>0</execution_type_id>
+      </step>
+    </steps>
+    <custom_fields>
+      <custom_field label="Positive/Negative" system_name="Positive/Negative">
+        <custom_values>
+          <custom_value>positive</custom_value>
+        </custom_values>
+      </custom_field>
+      <custom_field label="Вид тестирования" system_name="Вид тестирования">
+        <custom_values>
+          <custom_value>WEB</custom_value>
+        </custom_values>
+      </custom_field>
+    </custom_fields>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+  <test_case internal_id="3678" name="Sign Up with inadequate email">
+    <external_id>QBC-2701</external_id>
+    <summary>
+      <![CDATA[]]>
+    </summary>
+    <preconditions>
+      <![CDATA[Entrypoint:&nbsp;<a href="http://bazar.jettycloud.com/" target="_blank" style="background-color: rgb(48, 48, 48); font-family: Roboto; font-weight: 400;">http://bazar.jettycloud.com/</a><br>User is not logged in]]>
+    </preconditions>
+    <steps>
+      <step>
+        <order>1</order>
+        <name>
+          <![CDATA[<p>Hit the "Sign Up" button</p><p>Fill all the fields adequately. In the field email type the email without "@domain.domain"<br>Hit the "Sign Up" button</p>]]>
+        </name>
+        <expected_result>
+          <![CDATA[<p>The error occurs saying "email is not correct"</p>]]>
+        </expected_result>
+        <execution_type_id>0</execution_type_id>
+      </step>
+    </steps>
+    <custom_fields>
+      <custom_field label="Positive/Negative" system_name="Positive/Negative">
+        <custom_values>
+          <custom_value>negative</custom_value>
+        </custom_values>
+      </custom_field>
+      <custom_field label="Вид тестирования" system_name="Вид тестирования">
+        <custom_values>
+          <custom_value>WEB</custom_value>
+        </custom_values>
+      </custom_field>
+    </custom_fields>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+  <test_case internal_id="3702" name="Sign Up with email that already exists in the system">
+    <external_id>QBC-2722</external_id>
+    <summary>
+      <![CDATA[]]>
+    </summary>
+    <preconditions>
+      <![CDATA[Entrypoint:&nbsp;<a href="http://bazar.jettycloud.com/" target="_blank" style="background-color: rgb(48, 48, 48); font-family: Roboto; font-weight: 400;">http://bazar.jettycloud.com/</a><br>User is not logged in. In the system exists user with email {email}]]>
+    </preconditions>
+    <steps>
+      <step>
+        <order>1</order>
+        <name>
+          <![CDATA[<p>Hit the "Sign Up" button</p><p>Fill all the fields adequately. In the field email type {email}<br>Hit the "Sign Up" button</p>]]>
+        </name>
+        <expected_result>
+          <![CDATA[<p>The error occurs saying "This email is already in use"</p>]]>
+        </expected_result>
+        <execution_type_id>0</execution_type_id>
+      </step>
+    </steps>
+    <custom_fields>
+      <custom_field label="Positive/Negative" system_name="Positive/Negative">
+        <custom_values>
+          <custom_value>negative</custom_value>
+        </custom_values>
+      </custom_field>
+      <custom_field label="Вид тестирования" system_name="Вид тестирования">
+        <custom_values>
+          <custom_value>WEB</custom_value>
+        </custom_values>
+      </custom_field>
+    </custom_fields>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+  <test_case internal_id="3675" name="Create lot with negative price value">
+    <external_id>QBC-2698</external_id>
+    <summary>
+      <![CDATA[]]>
+    </summary>
+    <preconditions>
+      <![CDATA[<p>Entrypoint: <a href="http://bazar.jettycloud.com/lots" target="_blank">http://bazar.jettycloud.com/lots</a><br>Click on the "Add new lot" button</p>]]>
+    </preconditions>
+    <steps/>
+    <custom_fields/>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+  <test_case internal_id="3682" name="Create lot with adequate fields values">
+    <external_id>QBC-2705</external_id>
+    <summary>
+      <![CDATA[]]>
+    </summary>
+    <preconditions>
+      <![CDATA[Entrypoint:&nbsp;<a href="http://bazar.jettycloud.com/lots" target="_blank" style="background-color: rgb(48, 48, 48); font-family: Roboto; font-weight: 400;">http://bazar.jettycloud.com/lots</a><br>Click on the "Add new lot" button]]>
+    </preconditions>
+    <steps/>
+    <custom_fields/>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+  <test_case internal_id="3689" name="Create lot with .txt file">
+    <external_id>QBC-2711</external_id>
+    <summary>
+      <![CDATA[]]>
+    </summary>
+    <preconditions>
+      <![CDATA[Entrypoint:&nbsp;<a href="http://bazar.jettycloud.com/lots" target="_blank" style="background-color: rgb(48, 48, 48); font-family: Roboto; font-weight: 400;">http://bazar.jettycloud.com/lots</a><br>Click on the "Add new lot" button]]>
+    </preconditions>
+    <steps/>
+    <custom_fields/>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+  <test_case internal_id="3691" name="Create lot with empty field">
+    <external_id>QBC-2713</external_id>
+    <summary>
+      <![CDATA[]]>
+    </summary>
+    <preconditions>
+      <![CDATA[Entrypoint:&nbsp;<a href="http://bazar.jettycloud.com/lots" target="_blank" style="background-color: rgb(48, 48, 48); font-family: Roboto; font-weight: 400;">http://bazar.jettycloud.com/lots</a><br>Click on the "Add new lot" button]]>
+    </preconditions>
+    <steps/>
+    <custom_fields/>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+  <test_case internal_id="3694" name="Create lot with extreme field values">
+    <external_id>QBC-2716</external_id>
+    <summary>
+      <![CDATA[]]>
+    </summary>
+    <preconditions>
+      <![CDATA[Entrypoint:&nbsp;<a href="http://bazar.jettycloud.com/lots" target="_blank" style="background-color: rgb(48, 48, 48); font-family: Roboto; font-weight: 400;">http://bazar.jettycloud.com/lots</a><br>Click on the "Add new lot" button]]>
+    </preconditions>
+    <steps/>
+    <custom_fields/>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+  <test_case internal_id="3703" name="Exchange lots with other user">
+    <external_id>QBC-2723</external_id>
+    <summary>
+      <![CDATA[]]>
+    </summary>
+    <preconditions>
+      <![CDATA[]]>
+    </preconditions>
+    <steps/>
+    <custom_fields/>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+  <test_case internal_id="3699" name="Try to edit a lot that belongs to the User">
+    <external_id>QBC-2719</external_id>
+    <summary>
+      <![CDATA[]]>
+    </summary>
+    <preconditions>
+      <![CDATA[]]>
+    </preconditions>
+    <steps/>
+    <custom_fields/>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+  <test_case internal_id="3676" name="Page shows correctly when there are no notifications">
+    <external_id>QBC-2699</external_id>
+    <summary>
+      <![CDATA[]]>
+    </summary>
+    <preconditions>
+      <![CDATA[Entrypoint:&nbsp;<a href="http://bazar.jettycloud.com/lots" target="_blank" style="background-color: rgb(48, 48, 48); font-family: Roboto; font-weight: 400;">http://bazar.jettycloud.com/</a><br>User is logged in and has no requests]]>
+    </preconditions>
+    <steps>
+      <step>
+        <order>1</order>
+        <name>
+          <![CDATA[<p>Go to the "Notifications" page.</p>]]>
+        </name>
+        <expected_result>
+          <![CDATA[<p>There are no information about lots and incoming requests</p>]]>
+        </expected_result>
+        <execution_type_id>0</execution_type_id>
+      </step>
+    </steps>
+    <custom_fields>
+      <custom_field label="Positive/Negative" system_name="Positive/Negative">
+        <custom_values>
+          <custom_value>negative</custom_value>
+        </custom_values>
+      </custom_field>
+      <custom_field label="Вид тестирования" system_name="Вид тестирования">
+        <custom_values>
+          <custom_value>WEB</custom_value>
+        </custom_values>
+      </custom_field>
+    </custom_fields>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+  <test_case internal_id="3683" name="Notification is displayed when the item is requested">
+    <external_id>QBC-2706</external_id>
+    <summary>
+      <![CDATA[]]>
+    </summary>
+    <preconditions>
+      <![CDATA[Entrypoint:&nbsp;<a href="http://bazar.jettycloud.com/lots" target="_blank" style="background-color: rgb(48, 48, 48); font-family: Roboto; font-weight: 400;">http://bazar.jettycloud.com/</a><br>User is logged in. The user has an incoming request&nbsp;]]>
+    </preconditions>
+    <steps>
+      <step>
+        <order>1</order>
+        <name>
+          <![CDATA[<p>Go to the "Notifications" page<br></p>]]>
+        </name>
+        <expected_result>
+          <![CDATA[<p>The page shows the lot and an incoming request</p>]]>
+        </expected_result>
+        <execution_type_id>0</execution_type_id>
+      </step>
+    </steps>
+    <custom_fields>
+      <custom_field label="Positive/Negative" system_name="Positive/Negative">
+        <custom_values>
+          <custom_value>positive</custom_value>
+        </custom_values>
+      </custom_field>
+      <custom_field label="Вид тестирования" system_name="Вид тестирования">
+        <custom_values>
+          <custom_value>WEB</custom_value>
+        </custom_values>
+      </custom_field>
+    </custom_fields>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+  <test_case internal_id="3685" name="Passwords are stored in encrypted state">
+    <external_id>QBC-2707</external_id>
+    <summary>
+      <![CDATA[]]>
+    </summary>
+    <preconditions>
+      <![CDATA[Entrypoint:&nbsp;http://bazar.jettycloud.com/]]>
+    </preconditions>
+    <steps>
+      <step>
+        <order>1</order>
+        <name>
+          <![CDATA[<p>Create a new user with {username} and {password}</p>]]>
+        </name>
+        <expected_result>
+          <![CDATA[<p>User is created</p>]]>
+        </expected_result>
+        <execution_type_id>0</execution_type_id>
+      </step>
+      <step>
+        <order>2</order>
+        <name>
+          <![CDATA[<p>Go to the database and find user {username}. Check that their password stored in an encrypted state</p>]]>
+        </name>
+        <expected_result>
+          <![CDATA[<p>The password stored in an encrypted state</p>]]>
+        </expected_result>
+        <execution_type_id>0</execution_type_id>
+      </step>
+    </steps>
+    <custom_fields/>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+  <test_case internal_id="3686" name="SQL-injection on API request">
+    <external_id>QBC-2708</external_id>
+    <summary>
+      <![CDATA[<p>This injection intends to show if our database is vulnerable to this type of attacks</p>]]>
+    </summary>
+    <preconditions>
+      <![CDATA[]]>
+    </preconditions>
+    <steps>
+      <step>
+        <order>1</order>
+        <name>
+          <![CDATA[<p>Do POST request that looks like this:<br>URL:&nbsp;<a href="http://bazar.jettycloud.com:8080/signup" target="_blank" style="font-family: Roboto; font-weight: normal; text-decoration: none; background-color: rgb(48, 48, 48); color: rgb(243, 178, 107) !important;">http://bazar.jettycloud.com:8080/signup</a><span style="background-color: transparent; color: rgb(33, 33, 33); font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, Helvetica, Arial, sans-serif; font-size: 12px; white-space: pre-wrap;"> </span></p><p><span id="docs-internal-guid-98cce3b7-7fff-e31f-e69d-ce4409573e05"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap; color: inherit;">​</span></span><span style="color: inherit; font-family: Arial; font-size: 11pt; white-space: pre-wrap; background-color: transparent;">​{</span></p><p><span style="color: inherit; font-family: Arial; font-size: 11pt; white-space: pre-wrap; background-color: transparent;">"username":"usr' OR 1=1;--",</span></p><p><span id="docs-internal-guid-98cce3b7-7fff-e31f-e69d-ce4409573e05"><span style="font-size: 11pt; font-family: Arial; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap; color: inherit;">"password":"{password}",
+"email":"{email}"
+}</span></span><br></p>]]>
+        </name>
+        <expected_result>
+          <![CDATA[<p><span style="background-color: transparent;">Server answer looks like this:</span><br></p><p>Code 200</p><p>Body:<br>{<br>token:{token}<br>}</p>]]>
+        </expected_result>
+        <execution_type_id>0</execution_type_id>
+      </step>
+      <step>
+        <order>2</order>
+        <name>
+          <![CDATA[<p>Go to the database and check there is a user with username "usr' OR 1=1;--"</p>]]>
+        </name>
+        <expected_result>
+          <![CDATA[<p>There is a such user</p>]]>
+        </expected_result>
+        <execution_type_id>0</execution_type_id>
+      </step>
+    </steps>
+    <custom_fields>
+      <custom_field label="Positive/Negative" system_name="Positive/Negative">
+        <custom_values>
+          <custom_value>positive</custom_value>
+        </custom_values>
+      </custom_field>
+      <custom_field label="Вид тестирования" system_name="Вид тестирования">
+        <custom_values>
+          <custom_value>Безопасности</custom_value>
+        </custom_values>
+      </custom_field>
+    </custom_fields>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+  <test_case internal_id="3690" name="Edit someone else's lot">
+    <external_id>QBC-2712</external_id>
+    <summary>
+      <![CDATA[]]>
+    </summary>
+    <preconditions>
+      <![CDATA[<p>The system has at least 2 users and 1 active lot</p><p>Sign In with the user so there is lot(s) in the system that does not belongs to this user</p>]]>
+    </preconditions>
+    <steps>
+      <step>
+        <order>1</order>
+        <name>
+          <![CDATA[<p>Go to the "Lots" page</p>]]>
+        </name>
+        <expected_result>
+          <![CDATA[<p>There is at least 1 lot that doesn't belong to you</p>]]>
+        </expected_result>
+        <execution_type_id>0</execution_type_id>
+      </step>
+      <step>
+        <order>2</order>
+        <name>
+          <![CDATA[<p>Click on someone else's lot</p>]]>
+        </name>
+        <expected_result>
+          <![CDATA[<p>On the opened page there is no "Edit" button&nbsp;</p>]]>
+        </expected_result>
+        <execution_type_id>0</execution_type_id>
+      </step>
+    </steps>
+    <custom_fields>
+      <custom_field label="Positive/Negative" system_name="Positive/Negative">
+        <custom_values>
+          <custom_value>negative</custom_value>
+        </custom_values>
+      </custom_field>
+      <custom_field label="Вид тестирования" system_name="Вид тестирования">
+        <custom_values>
+          <custom_value>Безопасности</custom_value>
+        </custom_values>
+      </custom_field>
+    </custom_fields>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+  <test_case internal_id="3693" name="Sign Up with already existing username">
+    <external_id>QBC-2715</external_id>
+    <summary>
+      <![CDATA[]]>
+    </summary>
+    <preconditions>
+      <![CDATA[There is at least 1 user in the system with username {username}<br>Entrypoint:&nbsp;http://bazar.jettycloud.com/]]>
+    </preconditions>
+    <steps>
+      <step>
+        <order>1</order>
+        <name>
+          <![CDATA[<p>Click on the "Sign Up" button<br><br></p>]]>
+        </name>
+        <expected_result>
+          <![CDATA[<p>The form of registration opened</p>]]>
+        </expected_result>
+        <execution_type_id>0</execution_type_id>
+      </step>
+      <step>
+        <order>2</order>
+        <name>
+          <![CDATA[<p>Fill all the fields like a normal user but in the field "username" use the already existing in the system username. Hit "Sign Up"</p>]]>
+        </name>
+        <expected_result>
+          <![CDATA[<p>The error occurred&nbsp; with the message "This username is already taken"</p>]]>
+        </expected_result>
+        <execution_type_id>0</execution_type_id>
+      </step>
+    </steps>
+    <custom_fields>
+      <custom_field label="Positive/Negative" system_name="Positive/Negative">
+        <custom_values>
+          <custom_value>negative</custom_value>
+        </custom_values>
+      </custom_field>
+      <custom_field label="Вид тестирования" system_name="Вид тестирования">
+        <custom_values>
+          <custom_value>Безопасности</custom_value>
+        </custom_values>
+      </custom_field>
+    </custom_fields>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+  <test_case internal_id="3698" name="Page scaling">
+    <external_id>QBC-2718</external_id>
+    <summary>
+      <![CDATA[]]>
+    </summary>
+    <preconditions>
+      <![CDATA[Entrypoint:&nbsp;<a href="http://bazar.jettycloud.com/lots" target="_blank" style="background-color: rgb(48, 48, 48); font-family: Roboto; font-weight: 400;">http://bazar.jettycloud.com/</a><br>The user is logged in]]>
+    </preconditions>
+    <steps>
+      <step>
+        <order>1</order>
+        <name>
+          <![CDATA[<p>Go to the page "Lots" and bring the scale up to 150%</p>]]>
+        </name>
+        <expected_result>
+          <![CDATA[<p>The page still looks readable and usable. Every element of the page is placed correctly</p>]]>
+        </expected_result>
+        <execution_type_id>0</execution_type_id>
+      </step>
+    </steps>
+    <custom_fields>
+      <custom_field label="Positive/Negative" system_name="Positive/Negative">
+        <custom_values>
+          <custom_value>positive</custom_value>
+        </custom_values>
+      </custom_field>
+      <custom_field label="Вид тестирования" system_name="Вид тестирования">
+        <custom_values>
+          <custom_value>UI</custom_value>
+        </custom_values>
+      </custom_field>
+    </custom_fields>
+    <behaviour_groups/>
+    <execution_type>0</execution_type>
+    <priority>2</priority>
+  </test_case>
+</test_cases>
